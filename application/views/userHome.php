@@ -19,7 +19,10 @@
 .card-title
 {
   padding: 10px;
-
+}
+.todo_name
+{
+  font-size: 1.5em;
 }
 </style>
 </head>
@@ -36,17 +39,16 @@
                 <ul class="collection with-header" style="margin: 0">
         <a href="#!" class="collection-item"><h5 class="grey-text">Add New Todo</h5></a>
       </ul>
-      <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <ul class="collapsible" data-collapsible="accordion" style="margin: 0">
+    <li data-id="1">
+      <div class="collapsible-header"><input type="checkbox" id="1" data-id="1" />
+      <label for="1">&nbsp;</label><span class="todo_name">First</span></div>
       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
     </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+
+    <li data-id="2">
+      <div class="collapsible-header"><input type="checkbox" id="2" />
+      <label for="2">&nbsp;</label><span class="todo_name">First</span><span class="red-text" style="float:right"><i class="material-icons">delete</i></span></div>
       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
     </li>
   </ul>
