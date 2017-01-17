@@ -12,4 +12,9 @@ class Home extends CI_Controller {
 	{
 		print_r($this->input->post());
 	}
+
+	public function register()
+	{
+		print_r($this->input->post());
+	}
 }
