@@ -15,7 +15,7 @@
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/todo.js"></script>
 <style type="text/css">
 
-#register
+<?php echo ($this->session->flashdata('register')) ? "#login" : "#register"; ?>
 {
 	display: none;
 }
@@ -69,6 +69,8 @@
 					<img src="<?php echo asset_url();?>img/register.png" width="128" />
 					<?php echo form_open('home/register'); ?>
 					<div class="row left-align">
+
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('fname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="icon_prefix" name="fname" type="text" class="validate" required="required">
@@ -76,7 +78,7 @@
 						</div>
 					
 
-					
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('lname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="icon_prefix" name="lname" type="text" class="validate" required="required">
@@ -84,7 +86,7 @@
 						</div>
 					
 
-					
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('email');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">email</i>
 							<input id="icon_prefix" name="email" type="email" class="validate" required="required">
@@ -92,7 +94,7 @@
 						</div>
 					
 
-					
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('password');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">vpn_key</i>
 							<input id="icon_prefix" name="password" type="password" class="validate" required="required">
@@ -102,7 +104,7 @@
 
 				
 				<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="loginBtn">Returning User? Login</a></p>
-				<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="register">Register</button>
+				<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="register" value="register">Register</button>
 				</div>
 				<?php echo form_close(); ?>
 				
