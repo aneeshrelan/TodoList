@@ -21,7 +21,10 @@ class Home extends CI_Controller {
 			if($this->form_validation->run())
 			{
 
-				echo 'success';
+				if($this->process->login())
+				{
+					echo 'loggedin';
+				}
 			}
 			else
 			{
@@ -47,10 +50,31 @@ class Home extends CI_Controller {
 			$this->form_validation->set_rules('lname','Last Name','required');
 			$this->form_validation->set_rules('email','Email','required|valid_email');
 			$this->form_validation->set_rules('password','Password','required');
+			$this->form_validation->set_rules('cnfPassword','Password Confirmation','required|matches[password]');
 
 			if($this->form_validation->run())
 			{
-				echo 'success';
+				switch ($this->process->register()) {
+					case -1:
+							$this->session->set_flashdata('error',true);
+							$this->session->set_flashdata('register',true);
+							$this->session->set_flashdata('msg',"Email Address already exists.");
+							redirect('home/');
+						break;
+
+
+					case 0:
+							$this->session->set_flashdata('error',true);
+							$this->session->set_flashdata('register',true);
+							$this->session->set_flashdata('msg', "Invalid Error Occurred. Try Again");
+						break;
+
+
+					case 1:
+						$this->session->set_flashdata('success',true);
+						redirect('home/');
+						break;
+				}
 			}
 			else
 			{
@@ -60,6 +84,7 @@ class Home extends CI_Controller {
 				$this->session->set_flashdata('lname',form_error('lname','<p class="red-text">','</p>'));
 				$this->session->set_flashdata('email',form_error('email','<p class="red-text">','</p>'));
 				$this->session->set_flashdata('password',form_error('password','<p class="red-text">','</p>'));
+				$this->session->set_flashdata('cnfPassword',form_error('cnfPassword','<p class="red-text">','</p>'));
 
 				redirect('home/');
 			}

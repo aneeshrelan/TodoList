@@ -21,6 +21,15 @@
 }
 
 </style>
+<?php if($this->session->flashdata('success')){ ?>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		Materialize.toast('Registration Successful',2000,'green');
+
+	});
+</script>
+<?php } ?>
 </head>
 <body class="container teal lighten-1">
 	<div class="row">
@@ -69,7 +78,9 @@
 					<img src="<?php echo asset_url();?>img/register.png" width="128" />
 					<?php echo form_open('home/register'); ?>
 					<div class="row left-align">
-
+					<?php if($this->session->flashdata('error') && $this->session->flashdata('msg')){
+						echo "<p class='red-text center-align'>" . $this->session->flashdata('msg') . "</p>";
+						} ?>
 					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('fname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
@@ -101,6 +112,13 @@
 							<label for="icon_prefix">Password</label>
 						</div>
 					
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('cnfPassword');}?>	
+						<div class="input-field col s12">
+							<i class="material-icons prefix">vpn_key</i>
+							<input id="icon_prefix" name="cnfPassword" type="password" class="validate" required="required">
+							<label for="icon_prefix">Retype Password</label>
+						</div>
+
 
 				
 				<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="loginBtn">Returning User? Login</a></p>
