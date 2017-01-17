@@ -7,4 +7,9 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
+
+	public function login()
+	{
+		print_r($this->input->post());
+	}
 }
