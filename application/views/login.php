@@ -1,4 +1,6 @@
-<?php $this->load->helper('form'); ?>
+<?php $this->load->helper('form');
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,9 +30,11 @@
 				<h1 class="flow-text teal-text">Hi, Login to Continue</h1>
 					<img src="<?php echo asset_url();?>img/login.png" width="128" />
 					<?php echo form_open('home/login'); ?>
-					<!-- <div class="row">
-						<p class="red-text center-align">Invalid Email/Password combination.</p>
-					</div> -->
+					<?php if($this->session->flashdata('error')){ ?>
+					<div class="row">
+						<?php echo $this->session->flashdata('msg'); ?>
+					</div>
+					<?php } ?>
 					<div class="row left-align">
 						<div class="input-field col s12">
 							<i class="material-icons prefix">email</i>
@@ -50,7 +54,7 @@
 				
 				<div class="row center-align">
 				<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="registerBtn">New User? Register</a></p>
-				<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="login">Login</button>
+				<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="login" value="login">Login</button>
 				</div>
 				<?php echo form_close(); ?>
 				</div>
