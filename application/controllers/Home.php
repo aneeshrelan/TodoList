@@ -3,6 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		if($this->session->userdata('logged'))
+		{
+			redirect('user/');
+		}
+	}
+
 	public function index()
 	{
 		$this->load->view('login');
@@ -21,9 +32,21 @@ class Home extends CI_Controller {
 			if($this->form_validation->run())
 			{
 
-				if($this->process->login())
+				$result = $this->process->login();
+
+				if($result != null)
 				{
-					echo 'loggedin';
+					$this->session->set_userdata('logged',true);
+					$this->session->set_userdata('id',$result);
+
+					redirect('user/');
+				}
+				else
+				{
+					//login failed
+					$this->session->set_flashdata('error',true);
+					$this->session->set_flashdata('msg','<p class="red-text center-align">Email and Password do not match</p>');
+					redirect('home/');
 				}
 			}
 			else
