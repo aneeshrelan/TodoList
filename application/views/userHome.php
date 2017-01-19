@@ -1,4 +1,4 @@
-<?php $this->load->helper('form'); ?>
+<?php $this->load->helper('form');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,19 @@
 
 
   <script src="<?php echo asset_url(); ?>js/todo.js"></script>
+
+<?php if($this->session->flashdata('error_new')){ $flag = TRUE;?>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#todo_new").openModal();
+  });
+</script>
+<?php } ?>
+<?php if($this->session->flashdata('success')){ ?>
+<script type="text/javascript">
+  Materialize.toast("<?php echo $this->session->flashdata('msg') ?>",2000,'green');
+</script>
+<?php } ?>
 </head>
 <body class="teal lighten-1">
   <div class="row">
@@ -30,18 +43,12 @@
             <ul class="collection with-header" style="margin: 0">
               <a class="collection-item modal-trigger" data-target="todo_new"><h5 class="grey-text" style="cursor: pointer;">Add New Todo</h5></a>
             </ul>
-            <ul class="collapsible" data-collapsible="accordion" style="margin: 0">
+            <ul class="collapsible todo" data-collapsible="accordion" style="margin: 0">
               <li data-id="1">
                 <div class="collapsible-header"><input type="checkbox" id="1" data-id="1" />
                   <label for="1">&nbsp;</label><span class="todo_name">First</span><span class="red-text todo_delete" style="float:right"><i class="material-icons">clear</i></span></div>
                   <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
                 </li>
-
-                <li data-id="2">
-                  <div class="collapsible-header"><input type="checkbox" id="2" class="todo_checkbox" />
-                    <label for="2">&nbsp;</label><span class="todo_name">First</span><span class="red-text todo_delete" style="float:right"><i class="material-icons">clear</i></span></div>
-                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                  </li>
                 </ul>
               </div>
               <div class="card-action center-align">
@@ -56,17 +63,18 @@
         <div id="todo_new" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4>New Todo</h4>
+            <?php echo $this->session->flashdata('msg'); ?>
             <?php echo form_open('user/newTodo',array('id'=>'newTodoForm')); ?>
             <div class="row">
               <div class="input-field col s12">
-                <input id="todo_title" type="text" name="todo_title">
+                <input id="todo_title" type="text" name="todo_title" required="required" value="<?php echo $this->session->flashdata('title'); ?>">
                 <label for="todo_title">Title</label>
               </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea" name="todo_descr"></textarea>
+                  <textarea id="textarea1" class="materialize-textarea" name="todo_descr"><?php echo $this->session->flashdata('descr'); ?></textarea>
                   <label for="textarea1">Description</label>
                 </div>
             </div>
@@ -75,7 +83,7 @@
             <div class="row">
                 <div class="input-field col s12 dpicker">
                   <label>Deadline</label>
-                  <input type="date" class="datepicker" name="todo_deadline">
+                  <input type="date" class="datepicker" name="todo_deadline" required="required" value="<?php echo $this->session->flashdata('deadline'); ?>">
                 </div>
             </div>
           </div>

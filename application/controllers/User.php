@@ -29,16 +29,47 @@ class User extends CI_Controller {
 		{
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('todo_title','Title','required');
-			$this->form_validation->set_rules('todo_deadline','Deadline','callback_date_check');
+			$this->form_validation->set_rules('todo_deadline','Deadline','required|callback_date_check');
 
 			if($this->form_validation->run())
 			{
-				print_r($this->input->post());
+				$parsed = date_parse_from_format("j F, Y", $this->input->post('todo_deadline',TRUE));
+				if(checkdate($parsed["month"], $parsed["day"], $parsed["year"]))
+				{
+					if($this->process->newTodo())
+					{
+						$this->session->set_flashdata('success',TRUE);
+						$this->session->set_flashdata('msg','TODO Added');
+
+						redirect('user/');
+					}
+					else
+					{
+						echo "Invalid Error Occurred. Could not add TODO";
+						die();
+					}
+				}
+				else
+				{
+
+					$this->session->set_flashdata('error_new',TRUE);
+					$this->session->set_flashdata('msg',"<p class='red-text center-align'>Invalid Deadline Date</p>");
+					$this->session->set_flashdata('title',$this->input->post('todo_title',TRUE));
+					$this->session->set_flashdata('descr',$this->input->post('todo_descr',TRUE));
+					$this->session->set_flashdata('deadline',$this->input->post('todo_deadline',TRUE));
+					redirect('user/');
+				}
+				
 			}
 			else
 			{
-				echo validation_errors();
-								print_r($this->input->post());
+				$this->session->set_flashdata('error_new',TRUE);
+				$this->session->set_flashdata('msg',validation_errors("<p class='red-text center-align'>","</p>"));
+				$this->session->set_flashdata('title',$this->input->post('todo_title',TRUE));
+				$this->session->set_flashdata('descr',$this->input->post('todo_descr',TRUE));
+				$this->session->set_flashdata('deadline',$this->input->post('todo_deadline',TRUE));
+				redirect('user/');
+				
 
 			}
 		}
@@ -50,23 +81,23 @@ class User extends CI_Controller {
 
 	function date_check($str)
 	{
+
+
 		if(1 !== preg_match('/[0-9]{1,2}\s(January|February|March|April|May|June|July|August|September|October|November|December),\s[0-9]{4}/',$str))
 		{
-			$parsed = date_parse_from_format("j F, Y",$str);
-			if(!checkdate($parsed["month"], $parsed["day"], $parsed["year"]))
-			{
-				$this->form_validation->set_message('date_check','Invalid Deadline Date Entered');
-				return FALSE;
-			}
-			else
-			{
-				return TRUE;
-			}
+
+			$this->form_validation->set_message('date_check','Invalid Deadline Date Entered');
+			return FALSE;
 		}
 		else
 		{
 			return TRUE;
 		}
+	}
+
+	public function getTodo()
+	{
+		echo $this->process->getTodo();
 	}
 
 

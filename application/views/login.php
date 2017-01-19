@@ -4,15 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login | TODO LISTer</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <script src="<?php echo asset_url(); ?>js/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/materialize.min.css">
+  <script src="<?php echo asset_url(); ?>js/materialize.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo asset_url();  ?>js/materialize.min.js"></script>
-<script type="text/javascript" src="<?php echo asset_url(); ?>js/todo.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
+
+
+  <script src="<?php echo asset_url(); ?>js/todo.js"></script>
 <style type="text/css">
 
 <?php echo ($this->session->flashdata('register')) ? "#login" : "#register"; ?>
@@ -78,10 +81,10 @@
 					<img src="<?php echo asset_url();?>img/register.png" width="128" />
 					<?php echo form_open('home/register'); ?>
 					<div class="row left-align">
-					<?php if($this->session->flashdata('error') && $this->session->flashdata('msg')){
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('msg')){
 						echo "<p class='red-text center-align'>" . $this->session->flashdata('msg') . "</p>";
 						} ?>
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('fname');}?>	
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('fname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="icon_prefix" name="fname" type="text" class="validate" required="required">
@@ -89,7 +92,7 @@
 						</div>
 					
 
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('lname');}?>	
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('lname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="icon_prefix" name="lname" type="text" class="validate" required="required">
@@ -97,22 +100,22 @@
 						</div>
 					
 
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('email');}?>	
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('email');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">email</i>
 							<input id="icon_prefix" name="email" type="email" class="validate" required="required">
-							<label for="icon_prefix" data-error="That doesn't look like an Email Address">Email</label>
+							<label for="icon_prefix" data-register="That doesn't look like an Email Address">Email</label>
 						</div>
 					
 
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('password');}?>	
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('password');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">vpn_key</i>
 							<input id="icon_prefix" name="password" type="password" class="validate" required="required">
 							<label for="icon_prefix">Password</label>
 						</div>
 					
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('error')){ echo $this->session->flashdata('cnfPassword');}?>	
+					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('cnfPassword');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">vpn_key</i>
 							<input id="icon_prefix" name="cnfPassword" type="password" class="validate" required="required">

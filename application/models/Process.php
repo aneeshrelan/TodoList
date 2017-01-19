@@ -53,6 +53,43 @@ class Process extends CI_Model{
 	}
 
 
+	function newTodo()
+	{
+		$title = $this->input->post('todo_title',TRUE);
+		$descr = $this->input->post('todo_descr',TRUE);
+		$deadline = DateTime::createFromFormat("j F, Y", $this->input->post('todo_deadline',TRUE))->format('Y-m-d');
+
+
+
+
+		$user_id = $this->session->userdata('id');
+
+		$data = array('user_id' => $user_id,
+					  'title' => $title,
+					  'description' => $descr,
+					  'deadline' => $deadline);
+
+		if($this->db->insert('todos',$data) == 1)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
+	function getTodo()
+	{
+		$user_id = $this->session->userdata('id');
+
+
+		$query = $this->db->get_where('todos', array('user_id' => $user_id));
+
+		return json_encode($query->result_array());
+	}
+
+
 }
 
 

@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	$("#registerBtn").click(function(){
 
-		console.log('registerClicked');
+		$("p[class='red-text']").hide();
 		$("#login").hide();
 		$("#register").show().addClass('animated flipInY');
 		// $("#login").addClass('animated flipOutY',$("#register").show());
