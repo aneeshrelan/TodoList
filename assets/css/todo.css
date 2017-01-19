@@ -36,3 +36,25 @@
 	margin: 10px;
 	display: none;
 }
+
+.card-footer
+{
+  display: none;
+}
+
+#footer-text
+{
+  font-size: 18px;
+  font-style: italic;
+
+}
+
+.todo_delete
+{
+  float: right;
+}
+
+.card-options
+{
+  display: none;
+}
