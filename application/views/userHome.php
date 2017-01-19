@@ -55,11 +55,33 @@
         <div id="todo_new" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4>New Todo</h4>
-            
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="todo_title" type="password" class="validate">
+                <label for="todo_title">Title</label>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Description</label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s12 dpicker">
+                  <label>Deadline</label>
+                  <input type="date" class="datepicker">
+                </div>
+            </div>
           </div>
+
+
           <div class="modal-footer">
-            <!-- <a class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a> -->
-            <!-- <a class=" modal-action modal-close waves-effect waves-green btn-flat">No</a> -->
+            <button class="btn waves-effect waves-light" type="submit" name="todo_submit">Add</button>
+            <a class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
           </div>
         </div> 
       </body>

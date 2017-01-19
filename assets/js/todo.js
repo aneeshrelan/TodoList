@@ -6,9 +6,10 @@ $(document).ready(function(){
 	$('.modal-trigger').leanModal();
 
 	 $('.datepicker').pickadate({
-    selectMonths: true, 
-    selectYears: 15
-  });
+	 	container: 'body',
+	 	selectMonths: true,
+	 	selectYears: true
+	 });
 
 	$("#registerBtn").click(function(){
 
