@@ -95,10 +95,24 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function getTodo()
+	function getTodo()
 	{
-		echo $this->process->getTodo();
+		if($this->input->is_ajax_request())
+			echo $this->process->getTodo();
+		else
+			show_404();
 	}
+
+	public function completeToggle()
+	{
+		$todo_id = $this->input->post('id',TRUE);
+		$value = $this->input->post('val',TRUE);
+		$user_id = $this->session->userdata('id');
+
+		echo $todo_id . "-" . $value . "-s" . $user_id;
+	}
+
+
 
 
 }

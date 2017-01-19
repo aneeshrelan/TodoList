@@ -32,7 +32,7 @@ $(document).ready(function(){
 	});
 
 
-	$(".todo_delete").click(function(event){
+	$(document.body).on('click','.todo_delete',function(event){
 
 
 		var parent = $(this).parents('li:first');
@@ -41,6 +41,41 @@ $(document).ready(function(){
 		console.log("Del: " + id);
 
 		parent.hide('slow');
+		event.stopPropagation();
+
+	});
+
+	$(document.body).on('change','.complete_check',function(event){
+
+		var parent = $(this).parents('li:first');
+		var id = parent.data('id');
+		var value = 0;
+
+		if ($(this).is(':checked'))
+		{
+			parent.addClass('completed');
+			value = 1;
+		}
+		else
+		{
+			parent.removeClass('completed');
+		}
+
+
+		$.ajax({
+			url: base_url + "completeToggle",
+			type: 'post',
+			dataType: 'text',
+			data: {"id" : id, "val" : value},
+			beforeSend: function(){$('.loader').show();},
+			complete: function(){$('.loader').hide();},
+			success: function(data)
+			{
+				console.log(data);
+			}
+		});
+
+
 		event.stopPropagation();
 
 	});
@@ -58,21 +93,22 @@ $(document).ready(function(){
 	function update()
 	{
 		$.ajax({
-			url: base_url,
+			url: base_url + "getTodo",
 			dataType: 'json',
 			beforeSend: function(){$('.loader').show();},
 			complete: function(){$('.loader').hide();},
 			success: function(data)
 			{
 				var ul = $('#todo_list');
-				ul.html("");
+			
 				if(data.length > 0)
 				{
+					$('.card-options').addClass('animated bounceIn').show();
 					$.each(data,function(index,element){
 
-						var li = "<li data-id='" + element.id + "'>";
+						var li = '<li ' + ((element.completed == 1) ? "class='completed'" : "") +  'data-id="' + element.id + '">';
 						li += '<div class="collapsible-header">';
-						li += '<input type="checkbox" id="' + index + '" />';
+						li += '<input type="checkbox" id="' + index + '" class="complete_check"/>';
 						li += '<label for="' + index + '">&nbsp;</label>';
 						li += '<span class="todo_name">' + element.title + '</span>';
 						li += '<span class="red-text todo_delete">';
@@ -81,10 +117,12 @@ $(document).ready(function(){
 						li += '<div class="collapsible-body"><p>' + element.description + '</p></div>';
 						li += '</li>';
 
-
-						addToList('todo_list',li);
+						
+						$(li).hide().appendTo(ul).addClass('animated slideInDown').show();
 
 					});
+
+					ul.collapsible();
 				}
 				else
 				{
@@ -95,12 +133,7 @@ $(document).ready(function(){
 		});
 	}
 
-	function addToList(listName, listItemHTML)
-	{
-		$(listItemHTML).hide().appendTo('#' + listName).addClass('animated fadeIn').show();
-	}
-
-	// update();
+	update();
 
 
 

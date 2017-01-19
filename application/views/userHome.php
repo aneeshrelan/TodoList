@@ -16,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
   <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
 
-  <script type="text/javascript">var base_url = "<?php echo base_url(); ?>index.php/user/getTodo"</script>
+  <script type="text/javascript">var base_url = "<?php echo base_url(); ?>index.php/user/"</script>
   <script src="<?php echo asset_url(); ?>js/todo.js"></script>
 
 <?php if($this->session->flashdata('error_new')){ $flag = TRUE;?>
@@ -49,17 +49,9 @@
               <a class="collection-item modal-trigger" data-target="todo_new"><h5 class="grey-text" style="cursor: pointer;">Add New Todo</h5></a>
             </ul>
             <ul class="collapsible" id="todo_list" data-collapsible="accordion" style="margin: 0">
-            <!-- <li data-id="1" style=""><div class="collapsible-header"><input type="checkbox" id="0"><label for="0">&nbsp;</label><span class="todo_name">Deposit Cash</span><span class="red-text todo_delete"><i class="material-icons">clear</i></span></div><div class="collapsible-body"><p>Deposit cash in bank</p></div></li> -->
-              <!-- <li data-id="1">
-                <div class="collapsible-header"><input type="checkbox" id="1" />
-                  <label for="1">&nbsp;</label><span class="todo_name">First</span><span class="red-text todo_delete"><i class="material-icons">clear</i></span></div>
-                  <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                </li> -->
                 </ul>
               </div>
               <div class="card-action center-align card-options">
-                <span>All</span>
-                <span>Completed</span>
               </div>
               <div class="card-action center-align card-footer">
                 <span id="footer-text"></span>

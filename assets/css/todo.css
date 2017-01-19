@@ -1,3 +1,7 @@
+html,body
+{
+  height: 100%;
+}
 *
 {
 	 -webkit-user-select: none; /* webkit (safari, chrome) browsers */
@@ -57,4 +61,9 @@
 .card-options
 {
   display: none;
+}
+
+.completed .todo_name
+{
+  text-decoration: line-through;
 }

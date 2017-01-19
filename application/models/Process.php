@@ -89,6 +89,17 @@ class Process extends CI_Model{
 		return json_encode($query->result_array());
 	}
 
+	function completeToggle($todo_id, $value)
+	{
+		$user_id = $this->session->userdata('id');
+
+		// $this->db->where('user_id',$user_id)->where('id',$todo_id);
+		// $this->db->update('todos',array('completed' => $value));
+
+		echo $todo_id + " " + $user_id + " " + $value;		
+
+	}
+
 
 }
 
