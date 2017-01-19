@@ -2,8 +2,13 @@ $(document).ready(function(){
 
 	// $("#login").show().addClass('animated flipInY');
 
-	 
+	
+	$('.modal-trigger').leanModal();
 
+	 $('.datepicker').pickadate({
+    selectMonths: true, 
+    selectYears: 15
+  });
 
 	$("#registerBtn").click(function(){
 
@@ -39,7 +44,7 @@ $(document).ready(function(){
 
 	$(".todo_new_link").click(function(){
 
-		$("#nutrition-facts").openModal();
+		$("#nutrition-facts").modal('open');
 
 	});
 

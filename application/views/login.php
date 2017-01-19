@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo asset_url();  ?>js/materialize.js"></script>
+<script type="text/javascript" src="<?php echo asset_url();  ?>js/materialize.min.js"></script>
 <script type="text/javascript" src="<?php echo asset_url(); ?>js/todo.js"></script>
 <style type="text/css">
 
