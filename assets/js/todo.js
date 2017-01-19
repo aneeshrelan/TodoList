@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	// $("#login").show().addClass('animated flipInY');
 
+	 
 
 
 	$("#registerBtn").click(function(){
@@ -24,6 +25,8 @@ $(document).ready(function(){
 
 
 	$(".todo_delete").click(function(event){
+
+
 		var parent = $(this).parents('li:first');
 		var id = parent.data('id');
 
@@ -31,6 +34,13 @@ $(document).ready(function(){
 
 		parent.hide('slow');
 		event.stopPropagation();
-	})
+
+	});
+
+	$(".todo_new_link").click(function(){
+
+		$("#nutrition-facts").openModal();
+
+	});
 
 });

@@ -2,14 +2,13 @@
 <html>
 <head>
   <title>TODOs</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
     <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo asset_url();  ?>js/materialize.js"></script>
 
+<script src="<?php echo asset_url(); ?>js/jquery.js"></script>
+<script src="<?php echo asset_url();  ?>js/materialize.min.js"></script>
 <script src="<?php echo asset_url(); ?>js/todo.js"></script>
 
 </head>
@@ -21,21 +20,11 @@
             <div class="card-content" style="padding: 0">
               <div class="card-title teal darken-1 white-text">
                 <span class="title">My List</span>
-                <div class="preloader-wrapper small active" style="float: right;">
-    <div class="spinner-layer spinner-red-only" style="display: inline; float: right;">
-      <div class="circle-clipper right">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper left">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
+                <img src="<?php echo asset_url(); ?>img/2.gif" class="loader">
               </div>
               <div class="content">
                 <ul class="collection with-header" style="margin: 0">
-        <a href="#!" class="collection-item"><h5 class="grey-text">Add New Todo</h5></a>
+        <a class="collection-item todo_new_link"><h5 class="grey-text">Add New Todo</h5></a>
       </ul>
       <ul class="collapsible" data-collapsible="accordion" style="margin: 0">
     <li data-id="1">
@@ -58,6 +47,16 @@
           </div>
         </div>
       </div>
+
+      <div id="nutrition-facts" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Nutrition Facts</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+</div>
 </body>
 
 </html>

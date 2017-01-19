@@ -1,3 +1,11 @@
+*
+{
+	 -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; 
+}
+
 .heading
 {
   font-size: 8em;
@@ -19,4 +27,12 @@
 .done .todo_name
 {
   text-decoration: line-through;
+}
+
+.loader
+{
+	float: right;
+	max-width: 25px;
+	margin: 10px;
+	display: none;
 }
