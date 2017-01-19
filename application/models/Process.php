@@ -113,7 +113,7 @@ class Process extends CI_Model{
 		$user_id = $this->session->userdata('id');
 
 		$this->db->where('user_id',$user_id)->where('id',$todo_id);
-		$this->db->delete('users');
+		$this->db->delete('todos');
 
 		if($this->db->affected_rows() == 1)
 		{

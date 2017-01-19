@@ -132,8 +132,8 @@ class User extends CI_Controller {
 
 	public function deleteTodo()
 	{
-		if($this->input->is_ajax_request())
-		{
+		// if($this->input->is_ajax_request())
+		// {
 			$todo_id = $this->input->post('id',TRUE);
 
 			if($this->process->deleteTodo($todo_id))
@@ -144,9 +144,9 @@ class User extends CI_Controller {
 			{
 				echo "0";
 			}
-		}
-		else
-			show_404();
+		// }
+		// else
+			// show_404();
 	}
 
 

@@ -48,10 +48,13 @@
             <ul class="collection with-header" style="margin: 0">
               <a class="collection-item modal-trigger" data-target="todo_new"><h5 class="grey-text" style="cursor: pointer;">Add New Todo</h5></a>
             </ul>
-            <ul class="collapsible" id="todo_list" data-collapsible="accordion" style="margin: 0">
+            <ul class="collapsible" id="todo_list" data-collapsible="expandable" style="margin: 0">
+            
                 </ul>
               </div>
               <div class="card-action center-align card-options">
+              <span class="todo_total">Total: <span class="total_value"></span></span>
+              <p class="show_options center-align"><span class="show_all active">All</span><span class="show_pending">Pending</span><span class="show_completed">Completed</span></p>
               </div>
               <div class="card-action center-align card-footer">
                 <span id="footer-text"></span>

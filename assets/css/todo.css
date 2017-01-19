@@ -68,8 +68,42 @@ html,body
   text-decoration: line-through;
 }
 
-.collapsible-body
+.options_deadline
 {
-  font-size: 20px;
+  font-style: italic;
+  margin: 10px;
 }
 
+.todo_options
+{
+  position: relative;
+  margin-bottom: 20px;
+}
+.options_edit
+{
+  font-style: italic;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.show_options span
+{
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.show_options span.active
+{
+  font-weight: bold;
+}
+
+.todo_total
+{
+  float: left;
+}
+
+.total_value
+{
+  font-weight: bold;
+}
