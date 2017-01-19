@@ -16,6 +16,7 @@ $(document).ready(function(){
 	$("#registerBtn").click(function(){
 
 		$("p[class='red-text']").hide();
+		$(document).attr("title", "Register | TODOer");
 		$("#login").hide();
 		$("#register").show().addClass('animated flipInY');
 		// $("#login").addClass('animated flipOutY',$("#register").show());
@@ -25,7 +26,7 @@ $(document).ready(function(){
 
 	$("#loginBtn").click(function(){
 
-		console.log('loginClicked');
+		$(document).attr("title", "Login | TODOer");
 		$("#register").hide();
 		$("#login").show().addClass('animated flipInY');
 
@@ -291,11 +292,31 @@ $(document).ready(function(){
 
 	$(document.body).on('click','.options_edit',function(){
 
-		alert("Editing");
+		var parent = $(this).parents('li:first');
+		var id = parent.data('id');
+
+		var title = $(parent).find('.todo_name').text();
+		var descr = $(parent).find('.collapsible-body p').text();
+		var deadline = $(parent).find('.options_deadline').text();
+
+		var modal = $("#todo_edit");
+
+		$(modal).find("#todo_id").val(id);
+		$(modal).find('#todo_title').val(title);
+		$(modal).find("#todo_descr").val(descr);
+		$(modal).find("#todo_deadline").val(deadline.split(':')[1].trim());
+		Materialize.updateTextFields();
+
+		modal.openModal();
 
 	});
 
 
+	$('.logout a').click(function(){
+
+		window.location.href = base_url + "logout";
+
+	});
 
 
 });

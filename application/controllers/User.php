@@ -14,6 +14,7 @@ class User extends CI_Controller {
 
 	public function index()
 	{
+		
 		$this->load->view('userHome');
 	}
 
@@ -132,8 +133,8 @@ class User extends CI_Controller {
 
 	public function deleteTodo()
 	{
-		// if($this->input->is_ajax_request())
-		// {
+		if($this->input->is_ajax_request())
+		{
 			$todo_id = $this->input->post('id',TRUE);
 
 			if($this->process->deleteTodo($todo_id))
@@ -144,9 +145,67 @@ class User extends CI_Controller {
 			{
 				echo "0";
 			}
-		// }
-		// else
-			// show_404();
+		}
+		else
+			show_404();
+	}
+
+	public function editTodo()
+	{
+		if($this->input->post('todo_submit'))
+		{
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('todo_title','Title','required');
+			$this->form_validation->set_rules('todo_deadline','Deadline','required|callback_date_check');
+
+			if($this->form_validation->run())
+			{
+				$parsed = date_parse_from_format("j F, Y", $this->input->post('todo_deadline',TRUE));
+				if(checkdate($parsed["month"], $parsed["day"], $parsed["year"]))
+				{
+					if($this->process->editTodo())
+					{
+						$this->session->set_flashdata('success',TRUE);
+						$this->session->set_flashdata('msg','TODO Modified');
+
+						redirect('user/');
+					}
+					else
+					{
+						echo "Invalid Error Occurred. Could not modify TODO";
+						die();
+					}
+				}
+				else
+				{
+
+					$this->session->set_flashdata('error_edit',TRUE);
+					$this->session->set_flashdata('msg',"<p class='red-text center-align'>Invalid Deadline Date</p>");
+					$this->session->set_flashdata('title',$this->input->post('todo_id',TRUE));
+					$this->session->set_flashdata('title',$this->input->post('todo_title',TRUE));
+					$this->session->set_flashdata('descr',$this->input->post('todo_descr',TRUE));
+					$this->session->set_flashdata('deadline',$this->input->post('todo_deadline',TRUE));
+					redirect('user/');
+				}
+				
+			}
+			else
+			{
+				$this->session->set_flashdata('error_edit',TRUE);
+				$this->session->set_flashdata('msg',validation_errors("<p class='red-text center-align'>","</p>"));
+				$this->session->set_flashdata('title',$this->input->post('todo_id',TRUE));
+				$this->session->set_flashdata('title',$this->input->post('todo_title',TRUE));
+				$this->session->set_flashdata('descr',$this->input->post('todo_descr',TRUE));
+				$this->session->set_flashdata('deadline',$this->input->post('todo_deadline',TRUE));
+				redirect('user/');
+				
+
+			}
+		}
+		else
+		{
+			redirect('user/');
+		}
 	}
 
 

@@ -9,12 +9,13 @@ class Process extends CI_Model{
 		$email = $this->input->post('email',TRUE);
 		$pass = sha1($this->input->post('password'));
 
-		$this->db->select('id');
+		$this->db->select('id,fname');
 		$query = $this->db->get_where('users',array('email' => $email, 'password' => $pass));
 
 		if($query->num_rows() == 1)
 		{
-			return $query->row('id');
+			return $query->row_array();
+			
 		}
 		
 		return null;
@@ -123,6 +124,35 @@ class Process extends CI_Model{
 		{
 			return FALSE;
 		}
+	}
+
+	function editTodo()
+	{
+		$todo_id = $this->input->post('todo_id',TRUE);
+		$user_id = $this->session->userdata('id');
+
+		$title = $this->input->post('todo_title',TRUE);
+		$descr = $this->input->post('todo_descr',TRUE);
+		$deadline = DateTime::createFromFormat("j F, Y", $this->input->post('todo_deadline',TRUE))->format('Y-m-d');	
+
+
+		$data = array('title' => $title,
+					  'description' => $descr,
+					  'deadline' => $deadline);
+
+		$this->db->where("user_id",$user_id)->where('id',$todo_id);
+		$this->db->update('todos',$data);
+
+
+		if($this->db->affected_rows() == 1)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+
 	}
 
 
