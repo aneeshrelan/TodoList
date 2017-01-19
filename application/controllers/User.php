@@ -105,11 +105,48 @@ class User extends CI_Controller {
 
 	public function completeToggle()
 	{
-		$todo_id = $this->input->post('id',TRUE);
-		$value = $this->input->post('val',TRUE);
-		$user_id = $this->session->userdata('id');
+		if($this->input->is_ajax_request())
+		{
+			$todo_id = $this->input->post('id',TRUE);
+			$value = $this->input->post('val',TRUE);
 
-		echo $todo_id . "-" . $value . "-s" . $user_id;
+			if($value == "0" || $value == "1")
+			{
+				if($this->process->completeToggle($todo_id, $value))
+				{
+					echo "1";
+				}
+				else
+				{
+					echo "0";
+				}
+			}
+			else
+			{
+				echo "0";
+			}
+		}
+		else
+			show_404();
+	}
+
+	public function deleteTodo()
+	{
+		if($this->input->is_ajax_request())
+		{
+			$todo_id = $this->input->post('id',TRUE);
+
+			if($this->process->deleteTodo($todo_id))
+			{
+				echo "1";
+			}
+			else
+			{
+				echo "0";
+			}
+		}
+		else
+			show_404();
 	}
 
 

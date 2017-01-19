@@ -38,9 +38,11 @@ $(document).ready(function(){
 		var parent = $(this).parents('li:first');
 		var id = parent.data('id');
 
-		console.log("Del: " + id);
 
-		parent.hide('slow');
+
+
+
+		// parent.hide('slow');
 		event.stopPropagation();
 
 	});
@@ -53,12 +55,11 @@ $(document).ready(function(){
 
 		if ($(this).is(':checked'))
 		{
-			parent.addClass('completed');
 			value = 1;
 		}
 		else
 		{
-			parent.removeClass('completed');
+			value = 0;
 		}
 
 
@@ -71,7 +72,24 @@ $(document).ready(function(){
 			complete: function(){$('.loader').hide();},
 			success: function(data)
 			{
-				console.log(data);
+				
+				if(data != 1)
+				{
+					Materialize.toast('Invalid Request',2000,'red');
+				}
+				else if(data == 1)
+				{
+					if(value == 1)
+					{
+						parent.addClass('completed');
+					}
+					else
+					{
+						parent.removeClass('completed');
+					}
+				}
+				
+
 			}
 		});
 
@@ -108,7 +126,7 @@ $(document).ready(function(){
 
 						var li = '<li ' + ((element.completed == 1) ? "class='completed'" : "") +  'data-id="' + element.id + '">';
 						li += '<div class="collapsible-header">';
-						li += '<input type="checkbox" id="' + index + '" class="complete_check"/>';
+						li += '<input type="checkbox" ' + ((element.completed == 1) ? "checked='checked'" : "") + ' id="' + index + '" class="complete_check"/>';
 						li += '<label for="' + index + '">&nbsp;</label>';
 						li += '<span class="todo_name">' + element.title + '</span>';
 						li += '<span class="red-text todo_delete">';

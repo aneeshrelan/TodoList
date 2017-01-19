@@ -91,13 +91,38 @@ class Process extends CI_Model{
 
 	function completeToggle($todo_id, $value)
 	{
+
 		$user_id = $this->session->userdata('id');
 
-		// $this->db->where('user_id',$user_id)->where('id',$todo_id);
-		// $this->db->update('todos',array('completed' => $value));
+		$this->db->where('user_id',$user_id)->where('id',$todo_id);
+		$this->db->update('todos',array('completed' => $value));
 
-		echo $todo_id + " " + $user_id + " " + $value;		
+		if($this->db->affected_rows() == 1)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 
+	}
+
+	function deleteTodo($todo_id)
+	{
+		$user_id = $this->session->userdata('id');
+
+		$this->db->where('user_id',$user_id)->where('id',$todo_id);
+		$this->db->delete('users');
+
+		if($this->db->affected_rows() == 1)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 
 
