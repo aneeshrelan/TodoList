@@ -1,3 +1,4 @@
+<?php $this->load->helper('form'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
           </div>
           <div class="content">
             <ul class="collection with-header" style="margin: 0">
-              <a class="collection-item modal-trigger" data-target="todo_new"><h5 class="grey-text">Add New Todo</h5></a>
+              <a class="collection-item modal-trigger" data-target="todo_new"><h5 class="grey-text" style="cursor: pointer;">Add New Todo</h5></a>
             </ul>
             <ul class="collapsible" data-collapsible="accordion" style="margin: 0">
               <li data-id="1">
@@ -55,16 +56,17 @@
         <div id="todo_new" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4>New Todo</h4>
+            <?php echo form_open('user/newTodo',array('id'=>'newTodoForm')); ?>
             <div class="row">
               <div class="input-field col s12">
-                <input id="todo_title" type="password" class="validate">
+                <input id="todo_title" type="text" name="todo_title">
                 <label for="todo_title">Title</label>
               </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <textarea id="textarea1" class="materialize-textarea" name="todo_descr"></textarea>
                   <label for="textarea1">Description</label>
                 </div>
             </div>
@@ -73,16 +75,19 @@
             <div class="row">
                 <div class="input-field col s12 dpicker">
                   <label>Deadline</label>
-                  <input type="date" class="datepicker">
+                  <input type="date" class="datepicker" name="todo_deadline">
                 </div>
             </div>
           </div>
 
 
+
+
           <div class="modal-footer">
-            <button class="btn waves-effect waves-light" type="submit" name="todo_submit">Add</button>
+            <button class="btn waves-effect waves-light" type="submit" name="todo_submit" value="add">Add</button>
             <a class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
           </div>
+          <?php echo form_close(); ?>
         </div> 
       </body>
 

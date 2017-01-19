@@ -6,7 +6,7 @@ class Process extends CI_Model{
 
 	function login()
 	{
-		$email = $this->input->post('email');
+		$email = $this->input->post('email',TRUE);
 		$pass = sha1($this->input->post('password'));
 
 		$this->db->select('id');

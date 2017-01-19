@@ -8,7 +8,9 @@ $(document).ready(function(){
 	 $('.datepicker').pickadate({
 	 	container: 'body',
 	 	selectMonths: true,
-	 	selectYears: true
+	 	selectYears: true,
+	 	close : 'Ok',
+	 	min: true
 	 });
 
 	$("#registerBtn").click(function(){
@@ -48,5 +50,9 @@ $(document).ready(function(){
 		$("#nutrition-facts").modal('open');
 
 	});
+
+	$("#todo_clear").click(function(){
+		$("#newTodoForm")[0].reset();
+	})
 
 });
