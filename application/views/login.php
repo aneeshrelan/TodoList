@@ -7,7 +7,7 @@
 <title>Login | TODOer</title>
 	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
-  <script src="<?php echo asset_url(); ?>js/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/materialize.min.css">
   <script src="<?php echo asset_url(); ?>js/materialize.min.js"></script>
 
