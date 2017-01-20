@@ -5,35 +5,7 @@
 <html>
 <head>
 <title>Login | TODOer</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <script src="<?php echo asset_url(); ?>js/jquery.js"></script>
-  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/materialize.min.css">
-  <script src="<?php echo asset_url(); ?>js/materialize.min.js"></script>
-
-
-  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
-
-
-  <script src="<?php echo asset_url(); ?>js/todo.js"></script>
-<style type="text/css">
-
-<?php echo ($this->session->flashdata('register')) ? "#login" : "#register"; ?>
-{
-	display: none;
-}
-
-</style>
-<?php if($this->session->flashdata('success')){ ?>
-<script type="text/javascript">
-	$(document).ready(function(){
-
-		Materialize.toast('Registration Successful',2000,'green');
-
-	});
-</script>
-<?php } ?>
+	
 </head>
 <body class="container teal lighten-1">
 	<div class="row">
