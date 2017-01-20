@@ -27,14 +27,14 @@ $(document).ready(function(){
 			type: 'post',
 			dataType: 'text',
 			data : {'id' : id},
-			beforeSend: function(){$('.loader').show();},
+			beforeSend: function(){$('.loader').show();parent.hide('slow').remove();},
 			complete: function(){$('.loader').hide();},
 			success: function(data)
 			{
 				if(data == 1)
 				{
 					
-					parent.hide('slow').remove();
+					// 
 					
 					var items = $("#todo_list li");
 					var count = 0;
