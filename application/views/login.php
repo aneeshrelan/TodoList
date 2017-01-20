@@ -16,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
 
 
-  <script src="<?php echo asset_url(); ?>js/todo.js"></script>
+  <script src="<?php echo asset_url(); ?>js/login.js"></script>
 <style type="text/css">
 
 <?php echo ($this->session->flashdata('register')) ? "#login" : "#register"; ?>

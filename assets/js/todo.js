@@ -3,8 +3,8 @@ $(document).ready(function(){
 	// $("#login").show().addClass('animated flipInY');
 
 	
-	// $('.modal-trigger').leanModal();
-	
+	$('.modal-trigger').leanModal();
+
 	 $('.datepicker').pickadate({
 	 	container: 'body',
 	 	selectMonths: true,
@@ -12,27 +12,6 @@ $(document).ready(function(){
 	 	close : 'Ok',
 	 	min: true
 	 });
-
-	$("#registerBtn").click(function(){
-
-
-
-		// $("p[class='red-text']").hide();
-		// $(document).attr("title", "Register | TODOer");
-		// $("#login").hide();
-		// $("#register").show().addClass('animated flipInY');
-		// $("#login").addClass('animated flipOutY',$("#register").show());
-		
-	
-	});
-
-	$("#loginBtn").click(function(){
-
-		$(document).attr("title", "Login | TODOer");
-		$("#register").hide();
-		$("#login").show().addClass('animated flipInY');
-
-	});
 
 
 	$("ul#todo_list").delegate(".todo_delete","click",function(e){
