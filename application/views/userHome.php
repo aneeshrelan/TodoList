@@ -83,7 +83,7 @@ $this->load->helper('form');
           <div class="card-content" style="padding: 0">
             <div class="card-title teal darken-1 white-text">
               <span class="title"><?php echo $this->session->userdata('fname') . "'s ";?> Todo List</span>
-              <img src="<?php echo asset_url(); ?>img/2.gif" class="loader">
+              <img src="<?php echo asset_url(); ?>img/2.gif" class="loader lazy">
             </div>
             <div class="content">
               <ul class="collection with-header" style="margin: 0">

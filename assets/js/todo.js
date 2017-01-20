@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	// $("#login").show().addClass('animated flipInY');
 
+	$("img.lazy").lazyload();
 	
 	$('.modal-trigger').leanModal();
 

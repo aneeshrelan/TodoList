@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	$("img.lazy").lazyload();
+
 
 	$("#registerBtn").click(function(){
 
