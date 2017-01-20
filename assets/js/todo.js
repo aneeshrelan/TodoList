@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	
 	$('.modal-trigger').leanModal();
-
+	console.log('loaded');
 	 $('.datepicker').pickadate({
 	 	container: 'body',
 	 	selectMonths: true,
@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	$("#registerBtn").click(function(){
 
-		alert('h');
+
 
 		// $("p[class='red-text']").hide();
 		// $(document).attr("title", "Register | TODOer");
