@@ -3,8 +3,8 @@ $(document).ready(function(){
 	// $("#login").show().addClass('animated flipInY');
 
 	
-	$('.modal-trigger').leanModal();
-	console.log('loaded');
+	// $('.modal-trigger').leanModal();
+	
 	 $('.datepicker').pickadate({
 	 	container: 'body',
 	 	selectMonths: true,
