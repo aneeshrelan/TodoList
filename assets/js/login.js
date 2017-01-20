@@ -9,7 +9,6 @@ $(document).ready(function(){
 		$(document).attr("title", "Register | TODOer");
 		$("#login").hide();
 		$("#register").show().addClass('animated flipInY');
-		$("#login").addClass('animated flipOutY',$("#register").show());
 		
 	
 	});
