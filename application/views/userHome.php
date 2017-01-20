@@ -23,6 +23,7 @@ $this->load->helper('form');
 
     <script src="<?php echo asset_url(); ?>js/jquery.js"></script>
     <script src="<?php echo asset_url(); ?>js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
     <script type="text/javascript">var base_url = "<?php echo base_url(); ?>index.php/user/"</script>
     <script src="<?php echo asset_url(); ?>js/todo.js"></script>
 
