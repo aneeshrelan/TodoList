@@ -33,9 +33,7 @@ $(document).ready(function(){
 			{
 				if(data == 1)
 				{
-					
-					// 
-					
+				
 					var items = $("#todo_list li");
 					var count = 0;
 					items.each(function(){
