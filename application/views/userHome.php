@@ -17,13 +17,12 @@ $this->load->helper('form');
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/animate.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+    <script src="<?php echo asset_url(); ?>js/jquery.js"></script>
+    <script src="<?php echo asset_url(); ?>js/materialize.min.js"></script>
     <script type="text/javascript">var base_url = "<?php echo base_url(); ?>index.php/user/"</script>
     <script src="<?php echo asset_url(); ?>js/todo.js"></script>
 
@@ -84,7 +83,7 @@ $this->load->helper('form');
           <div class="card-content" style="padding: 0">
             <div class="card-title teal darken-1 white-text">
               <span class="title"><?php echo $this->session->userdata('fname') . "'s ";?> Todo List</span>
-              <img src="<?php echo asset_url(); ?>img/2.gif" class="loader lazy">
+              <img src="<?php echo asset_url(); ?>img/2.gif" class="loader">
             </div>
             <div class="content">
               <ul class="collection with-header" style="margin: 0">

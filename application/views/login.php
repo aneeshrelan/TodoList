@@ -8,7 +8,7 @@ $this->load->helper('form');
 <html>
 <head>
 	<title>Login | TODOer</title>
-	
+
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
@@ -16,7 +16,6 @@ $this->load->helper('form');
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
 
 	<script src="<?php echo asset_url(); ?>js/login.js"></script>
 	
@@ -58,7 +57,7 @@ $this->load->helper('form');
 			<div id="login" class="login-form card-panel white center-align">
 				<div  class="card-content center-align">
 					<h1 class="flow-text teal-text">Hi, Login to Continue</h1>
-					<img class="lazy" src="<?php echo asset_url();?>img/login.png" width="128" />
+					<img  src="<?php echo asset_url();?>img/login.png" width="128" />
 					<?php echo form_open('home/login'); ?>
 					<?php if($this->session->flashdata('error')){ ?>
 					<div class="row">
@@ -96,7 +95,7 @@ $this->load->helper('form');
 			<div id="register" class="login-form card-panel white center-align">
 				<div  class="card-content center-align">
 					<h1 class="flow-text teal-text">Register to Start TODOing</h1>
-					<img class="lazy" src="<?php echo asset_url();?>img/register.png" width="128" />
+					<img src="<?php echo asset_url();?>img/register.png" width="128" />
 					<?php echo form_open('home/register'); ?>
 					<div class="row left-align">
 						<?php if($this->session->flashdata('register') && $this->session->flashdata('msg')){
