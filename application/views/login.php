@@ -7,43 +7,54 @@ $this->load->helper('form');
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login | TODOer</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>Login | TODOer</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js"></script>
+	<script src="<?php echo asset_url(); ?>js/login.js"></script>
+	
+	<style type="text/css">
 
+		<?php 
 
-  <link rel="stylesheet" type="text/css" href="<?php echo asset_url(); ?>css/todo.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+		//if form error is from register form, show register form on page load
 
+		echo ($this->session->flashdata('register')) ? "#login" : "#register"; ?>
+		{
+			display: none;
+		}
 
-  <script src="<?php echo asset_url(); ?>js/login.js"></script>
-<style type="text/css">
+	</style>
 
-<?php echo ($this->session->flashdata('register')) ? "#login" : "#register"; ?>
-{
-	display: none;
-}
+	<?php 
 
-</style>
-<?php if($this->session->flashdata('success')){ ?>
-<script type="text/javascript">
-	$(document).ready(function(){
+	//Show register success Toast if registered
 
-		Materialize.toast('Registration Successful',2000,'green');
+	if($this->session->flashdata('success')){ 
 
-	});
-</script>
-<?php } ?>
+		?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			Materialize.toast('Registration Successful',2000,'green');
+
+		});
+	</script>
+
+	<?php } ?>
+	
 </head>
+
 <body class="container teal lighten-1">
 	<div class="row">
 		<div class="col s6 offset-s3">
 			<div id="login" class="login-form card-panel white center-align">
 				<div  class="card-content center-align">
-				<h1 class="flow-text teal-text">Hi, Login to Continue</h1>
+					<h1 class="flow-text teal-text">Hi, Login to Continue</h1>
 					<img src="<?php echo asset_url();?>img/login.png" width="128" />
 					<?php echo form_open('home/login'); ?>
 					<?php if($this->session->flashdata('error')){ ?>
@@ -67,59 +78,59 @@ $this->load->helper('form');
 						</div>
 					</div>
 
-				
-				<div class="row center-align">
-				<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="registerBtn">New User? Register</a></p>
-				<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="login" value="login">Login</button>
-				</div>
-				<?php echo form_close(); ?>
+
+					<div class="row center-align">
+						<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="registerBtn">New User? Register</a></p>
+						<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="login" value="login">Login</button>
+					</div>
+					<?php echo form_close(); ?>
 				</div>
 
 			</div>
-		
 
 
-		<div id="register" class="login-form card-panel white center-align">
+
+			<div id="register" class="login-form card-panel white center-align">
 				<div  class="card-content center-align">
-				<h1 class="flow-text teal-text">Register to Start TODOing</h1>
+					<h1 class="flow-text teal-text">Register to Start TODOing</h1>
 					<img src="<?php echo asset_url();?>img/register.png" width="128" />
 					<?php echo form_open('home/register'); ?>
 					<div class="row left-align">
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('msg')){
-						echo "<p class='red-text center-align'>" . $this->session->flashdata('msg') . "</p>";
+						<?php if($this->session->flashdata('register') && $this->session->flashdata('msg')){
+							echo "<p class='red-text center-align'>" . $this->session->flashdata('msg') . "</p>";
 						} ?>
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('fname');}?>	
+						<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('fname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="icon_prefix" name="fname" type="text" class="validate" required="required">
 							<label for="icon_prefix">First Name</label>
 						</div>
-					
 
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('lname');}?>	
+
+						<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('lname');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
 							<input id="icon_prefix" name="lname" type="text" class="validate" required="required">
 							<label for="icon_prefix">Last Name</label>
 						</div>
-					
 
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('email');}?>	
+
+						<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('email');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">email</i>
 							<input id="icon_prefix" name="email" type="email" class="validate" required="required">
 							<label for="icon_prefix" data-register="That doesn't look like an Email Address">Email</label>
 						</div>
-					
 
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('password');}?>	
+
+						<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('password');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">vpn_key</i>
 							<input id="icon_prefix" name="password" type="password" class="validate" required="required">
 							<label for="icon_prefix">Password</label>
 						</div>
-					
-					<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('cnfPassword');}?>	
+
+						<?php if($this->session->flashdata('register') && $this->session->flashdata('register')){ echo $this->session->flashdata('cnfPassword');}?>	
 						<div class="input-field col s12">
 							<i class="material-icons prefix">vpn_key</i>
 							<input id="icon_prefix" name="cnfPassword" type="password" class="validate" required="required">
@@ -127,18 +138,18 @@ $this->load->helper('form');
 						</div>
 
 
-				
-				<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="loginBtn">Returning User? Login</a></p>
-				<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="register" value="register">Register</button>
+
+						<p class="center-align"><a class="teal-text waves-effect waves-light btn-flat" id="loginBtn">Returning User? Login</a></p>
+						<button class="col s6 offset-s3 btn waves-effect waves-light" type="submit" name="register" value="register">Register</button>
+					</div>
+					<?php echo form_close(); ?>
+
 				</div>
-				<?php echo form_close(); ?>
-				
 			</div>
-		</div>
 
 		</div>
 
 	</div>
-    
+
 </body>
 </html>
