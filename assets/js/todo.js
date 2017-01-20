@@ -33,8 +33,8 @@ $(document).ready(function(){
 			{
 				if(data == 1)
 				{
-					$(this).parent().hide();
-					// parent.hide('slow').remove();
+					
+					parent.hide('slow').remove();
 					
 					var items = $("#todo_list li");
 					var count = 0;
