@@ -178,7 +178,7 @@ class Process extends CI_Model{
 		}
 		else
 		{
-			//db update failure, return false
+			//db update failure, return falseg
 			return FALSE;
 		}
 

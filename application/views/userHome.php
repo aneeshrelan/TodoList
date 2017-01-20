@@ -96,6 +96,7 @@ $this->load->helper('form');
             <div class="card-action center-align card-options">
               <span class="todo_total">Total: <span class="total_value"></span></span>
               <p class="show_options center-align"><span class="show_all active">All</span><span class="show_pending">Pending</span><span class="show_completed">Completed</span></p>
+              <span class="mark_all">Mark All as Completed</span>
             </div>
             <div class="card-action center-align card-footer">
               <span id="footer-text"></span>
