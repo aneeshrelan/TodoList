@@ -85,7 +85,7 @@ $cleardb_db = substr($cleardb_url["path"], 1);
 // $cleardb_username = "root";
 // $cleardb_password = "aneesh2510";
 
-$cleardb_db = "todo";
+// $cleardb_db = "todo";
 
 
 
