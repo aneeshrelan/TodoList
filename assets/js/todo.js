@@ -300,5 +300,10 @@ $(document).ready(function(){
 
 	});
 
+	$('.mark_all').click(function(){
+		alert('h');
+
+	});
+
 
 });
